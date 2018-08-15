@@ -1,0 +1,11 @@
+/* Example
+
+@include font-face('Open Sans', '../fonts/OpenSans-Italic', normal, italic, $exts: woff woff2 ttf);
+
+// Var for using custom font
+$font-1: 'Open Sans', Helvetica, Arial, sans-serif;
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300i,400,600,700&subset=cyrillic');
+
+@include font-face('Roboto Regular', '../shared/fonts/Roboto/RobotoRegular', normal, $exts: ttf);

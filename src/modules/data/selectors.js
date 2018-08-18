@@ -1,10 +1,10 @@
-import { createSelector } from 'reselect';
+import {createSelector} from 'reselect';
 
 const data = state => state;
 
 const takeBalance = createSelector(
     data,
-    obj => +obj.data.balance
+    obj => obj.data.balance
 );
 
 export default {

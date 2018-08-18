@@ -1,21 +1,20 @@
 import * as types from './constants';
 
 const initialState = {
-  balance: 0
+    balance: 0,
 };
 
 function dataReducer(state = initialState, { type, payload }) {
-  switch (type) {
-
+    switch (type) {
     case types.ADD_FREE_CREDITS:
-      return {
-        ...state,
-        balance: payload
-      }    
+        return {
+            ...state,
+            balance: payload,
+        };
 
     default:
-      return state;
-  }
+        return state;
+    }
 }
 
 export default dataReducer;

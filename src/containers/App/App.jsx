@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
 
-// inmport components
+// import components
 import Header from 'components/Header';
 import DiceBoard from 'components/DiceBoard';
 
-//import selectors and actions
+// import selectors and actions
 import {
-  selectors as dataSelectors,
-  actions as dataActions,
+    selectors as dataSelectors,
+    actions as dataActions,
 } from 'modules/data';
 
 // import styles
@@ -20,15 +20,17 @@ import './App.css';
 
 class App extends Component {
     constructor(props) {
-      super(props);
+        super(props);
     }
 
+    clickDice = () => {
+        this.props.fetchData(1);
+    };
 
     render() {
-        // take data from props container(reducer -> selectors,actions -> props)
-        // const {
-        //     balance,
-        // } = this.props;
+        const {
+            postNumber,
+        } = this.props;
 
         return (
             <div className="app">
@@ -36,11 +38,12 @@ class App extends Component {
                     title="Welcome to our game!"
                 />
                 <main className="app__content">
-                    <div className="app__main">
+                    <div className="app__main" onClick={this.clickDice}>
                         <DiceBoard
                             className="mm"
                         />
-                    </div>                  
+                    </div>
+                    <div>{postNumber}</div>
                 </main>
             </div>
         );
@@ -48,40 +51,15 @@ class App extends Component {
 }
 
 App.propTypes = {
-    // balance: PropTypes.number,
-    // betAmount: PropTypes.number,
-    // number: PropTypes.number,
-    // hash: PropTypes.string,
-    // result: PropTypes.number,
-    // addFreeCredits: PropTypes.func,
-    // changeBetAmount: PropTypes.func,
-    // changeNumber: PropTypes.func,
-    // changeResult: PropTypes.func,
-    // changeOldResult: PropTypes.func,
-    // changeStatusWin: PropTypes.func,
-    // changeBalance: PropTypes.func,
-    // onWriteStore: PropTypes.func,
-    // addNewHash: PropTypes.func,
+    postNumber: PropTypes.number,
+    fetchData: PropTypes.func,
 };
 const mapStateToProps = createStructuredSelector({
-    // balance: dataSelectors.takeBalance,
-    // result: dataSelectors.takeResult,
-    // betAmount: dataSelectors.takeBetAmount,
-    // number: dataSelectors.takeNumber,
-    // winStatus: dataSelectors.takeWinStatus,
-    // hash: dataSelectors.takeHash,
-    // oldResult: dataSelectors.takeOldResult
+    postNumber: dataSelectors.takePostNumber,
 });
 
 const mapDispatchToProps = {
-    // addFreeCredits: dataActions.addFreeCredits,
-    // changeBetAmount: dataActions.changeBetAmount,
-    // changeNumber: dataActions.changeNumber,
-    // changeResult: dataActions.changeResult,
-    // changeOldResult: dataActions.changeOldResult,
-    // changeStatusWin: dataActions.changeStatusWin,
-    // changeBalance: dataActions.changeBalance,
-    // addNewHash: dataActions.addNewHash,
+    fetchData: dataActions.fetchData,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

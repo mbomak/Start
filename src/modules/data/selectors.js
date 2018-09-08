@@ -1,12 +1,12 @@
-import {createSelector} from 'reselect';
+import { createSelector } from 'reselect';
 
 const data = state => state;
 
-const takeBalance = createSelector(
+const takePostNumber = createSelector(
     data,
-    obj => obj.data.balance
+    obj => obj.data.postNumber
 );
 
 export default {
-  takeBalance,
+    takePostNumber,
 };

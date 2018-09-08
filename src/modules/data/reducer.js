@@ -1,17 +1,29 @@
+/* eslint-disable indent */
 import * as types from './constants';
 
 const initialState = {
-    balance: 0,
+    postNumber: null,
+    error: null,
+    data: null
 };
 
 function dataReducer(state = initialState, { type, payload }) {
     switch (type) {
-    case types.ADD_FREE_CREDITS:
+    case types.FETCH_DATA:
         return {
             ...state,
-            balance: payload,
+            postNumber: payload,
         };
-
+    case types.FETCH_DATA_SUCCESS:
+        return {
+            ...state,
+            data: payload
+        };
+    case types.FETCH_DATA_ERROR:
+        return {
+            ...state,
+            error: payload
+        };
     default:
         return state;
     }
